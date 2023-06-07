@@ -1,0 +1,88 @@
+﻿@model IEnumerable<DatLich.Models.staff>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Staff</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="~/Admin/Home/Index">Admin Home</a></li>
+            <li class="breadcrumb-item active">Staff</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-body">
+                Trang quản lý nhân viên.
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Staff Manager
+                <a class="btn btn-primary" style="width=100px" href="~/Admin/Staff/Create">Create</a>
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Birthday</th>
+                            <th>Address</th>
+                            <th>Position</th>
+                            <th>         </th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Birthday</th>
+                            <th>Address</th>
+                            <th>Position</th>
+                            <th>         </th>
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>@item.fullName</td>
+                                <td>@item.born</td>
+                                <td>@item.address</td>
+                                @if (item.idPosition != null)
+                                {
+                                    <td>@item.position.positionName</td>
+                                }
+                                else
+                                {
+                                    <td>NULL</td>
+                                }
+
+                                <td>
+                                    <ul class="list-inline m-0">
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-primary btn-sm rounded-0" type="button" href="~/Admin/Staff/Detail/@item.id" data-placement="top" title="Detail">Detail</a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-success btn-sm rounded-0" data-toggle="tooltip" data-placement="top" title="Edit" href="~/Admin/Staff/Edit/@item.id">Edit</a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm rounded-0" })
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</main>
+

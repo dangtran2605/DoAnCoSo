@@ -1,0 +1,47 @@
+﻿@model DatLich.Models.news
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<main>
+    <div class="page-section features" style="margin: 100px 10px">
+        <h4>Create News</h4>
+        <form action="~/Admin/News/Create" method="post" enctype="multipart/form-data">
+            <div class="form-outline mb-4">
+                <label for="InTitle">Title</label>
+                <input class="form-control" id="Title" name="newsTitle" type="text" placeholder="Title" autofocus />
+            </div>
+            
+            <div class="form-outlin mb-4">
+                <label for="InDetail">Detail</label>
+                <textarea class="form-control" name="detail" id="InDetail" rows="4"></textarea>
+            </div>
+            
+            <div class="form-outlin mb-4">
+                <label for="InDescrip">Description</label>
+                <textarea class="form-control" name="description" id="InDescrip" rows="6"></textarea>
+            </div>
+            
+            <div class="form-outlin mb-4">
+                <label for="InImage"></label>
+                <input type="file" class="form-control-file" name="Image" id="InImage" style="width: 100%;">
+            </div>
+            
+            <div class="form-check mb-4">
+
+                <input type="checkbox" class="form-check-input" name="IsActive" value="true" id="InIsA">
+                <label for="InIsA">IsActive</label>
+
+            </div>
+            <hr/>
+            <div class="form-check">
+                <a type="button" style="margin: 10px 10px; width: 20%" class="btn btn-lg btn-outline-primary btn-block" href="~/Admin/News/Index">Back</a>
+                <button type="submit" style="margin: 0px 10px; width: 20% " class="btn btn-lg btn-success btn-block">Create</button>
+            </div>
+        </form>
+    </div> 
+</main>
+
+
+

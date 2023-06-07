@@ -1,0 +1,97 @@
+﻿@model IEnumerable<DatLich.Models.detailBooking>
+    @{ 
+        Layout = null;
+    }
+@{
+    double? totalPrice = 0;
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <h5>
+                    <label for="ser" class="form-label">Hair Spa</label>
+                </h5>
+                <div class="form-label">
+                    @foreach (var service in Model)
+                    {
+                        if (service.idService != null && service.service.idCategory == 1)
+                        {
+                            <p>
+                                @service.service.serviceName - @service.service.priceSale VND
+                            </p>
+                            totalPrice += service.service.priceSale;
+                        }
+
+                    }
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <h5>
+                    <label for="ser" class="form-label">Nails</label>
+                </h5>
+
+                <div class="form-label">
+                    @foreach (var service in Model)
+                    {
+                        if (service.idService != null && service.service.idCategory == 2)
+                        {
+                            <p>
+                                @service.service.serviceName - @service.service.priceSale VND
+                            </p>
+                            totalPrice += service.service.priceSale;
+                        }
+
+                    }
+
+                </div>
+            </div>
+        </div>
+        <div class="w-100"></div>
+        <div class="col">
+            <div class="form-group">
+                <h5>
+                    <label for="ser" class="form-label">Massage</label>
+                </h5>
+                <div class="form-label">
+                    @foreach (var service in Model)
+                    {
+                        if (service.idService != null && service.service.idCategory == 3)
+                        {
+                            <p>
+                                @service.service.serviceName - @service.service.priceSale VND
+                            </p>
+                            totalPrice += service.service.priceSale;
+                        }
+
+                    }
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <h5>
+                    <label for="ser" class="form-label">Combo</label>
+                </h5>
+                <div class="form-label">
+                    @foreach (var service in Model)
+                    {
+                        if (service.idService != null && service.service.idCategory == 4)
+                        {
+                            <p>
+                                @service.service.serviceName - @service.service.priceSale VND
+                            </p>
+                            totalPrice += service.service.priceSale;
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row form-control">
+        <h6>Total Price  @totalPrice VND</h6>
+    </div>
+}
+

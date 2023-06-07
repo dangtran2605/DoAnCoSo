@@ -1,0 +1,103 @@
+﻿@model IEnumerable<DatLich.Models.accountAD>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Account</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="~/Admin/Home/Index">Admin Home</a></li>
+            <li class="breadcrumb-item active">Staff</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-body">
+                Trang quản lý Account Admin
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Staff Manager
+                <a class="btn btn-primary" style="width=100px" href="~/Admin/Account/Create">Create</a>
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>UserName</th>
+                            <th>Staff Name</th>
+                            <th>Position</th>
+                            <th>IsActive</th>
+                            <th>         </th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>UserName</th>
+                            <th>Staff Name</th>
+                            <th>Position</th>
+                            <th>IsActive</th>
+                            <th>         </th>
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>@item.userName</td>
+                                @if (item.idStaff != null)
+                                {
+                                    <td>@item.staff.fullName</td>
+                                }
+                                else
+                                {
+                                    <td>NULL</td>
+                                }
+
+                                @if (item.idStaff != null && item.staff.idPosition != null)
+                                {
+                                    <th>@item.staff.position.positionName</th>
+                                }
+                                else
+                                {
+                                    <td>NULL</td>
+                                }
+                                @if (item.isActive != null)
+                                {
+                                    <td>@item.isActive.ToString()</td>
+                                }
+                                else
+                                {
+                                    <td>NULL</td>
+                                }
+
+                                <td>
+                                    <ul class="list-inline m-0">
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-primary btn-sm rounded-0" type="button" href="~/Admin/Account/Detail/@item.id" data-placement="top" title="Detail">Detail</a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-success btn-sm rounded-0" data-toggle="tooltip" data-placement="top" title="Edit" href="~/Admin/Account/Edit/@item.id">Edit</a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm rounded-0" })
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</main>
+

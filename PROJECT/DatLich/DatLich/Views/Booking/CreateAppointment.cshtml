@@ -1,0 +1,135 @@
+﻿@model DatLich.Models.booking
+
+<main>
+    <div class="card col-md-10" style="margin:0px 100px ">
+        <form action="~/Booking/CreateAppointment" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="inPutName">Full Name</label>
+                        <input type="text" id="inPutName" name="fullName" class="form-control form-control-lg" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="inPhone">Phone</label>
+                        <input type="tel" id="inPhone" name="phone" class="form-control form-control-lg" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="inMail">Email</label>
+                        <input type="email" id="inMail" name="email" class="form-control form-control-lg" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="inAdr">Address</label>
+                        <input type="tel" id="inAdr" name="address" class="form-control form-control-lg" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="inpeo">People</label>
+                        <input type="number" id="inpeo" name="people" class="form-control form-control-lg" />
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <label for="date" class="form-label">Check In</label>
+                        <input asp-for="StartDate" id="date" name="dateCheckIn" type="date" class="form-control form-control-lg" />
+
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="card-group">
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <h5>
+                                                <label for="ser" class="form-label">Hair Spa</label>
+                                            </h5>
+
+                                            @foreach (var service in ViewBag.Service)
+                                            {
+                                                if (service.idCategory == 1)
+                                                {
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="ServiceID" value="@service.id" /> @service.serviceName - @service.priceSale VND
+                                                        </label>
+                                                    </div>
+                                                }
+
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <h5>
+                                                <label for="ser" class="form-label">Nails</label>
+                                            </h5>
+
+                                            @foreach (var service in ViewBag.Service)
+                                            {
+                                                if (service.idCategory == 2)
+                                                {
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="ServiceID" value="@service.id" /> @service.serviceName  - @service.priceSale VND
+                                                        </label>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <h5>
+                                                <label for="ser" class="form-label">Massage</label>
+                                            </h5>
+                                            @foreach (var service in ViewBag.Service)
+                                            {
+                                                if (service.idCategory == 3)
+                                                {
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="ServiceID" value="@service.id" /> @service.serviceName  - @service.priceSale VND
+                                                        </label>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <h5>
+                                                <label for="ser" class="form-label">Combo</label>
+                                            </h5>
+                                            @foreach (var service in ViewBag.Service)
+                                            {
+                                                if (service.idCategory == 4)
+                                                {
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="ServiceID" value="@service.id" /> @service.serviceName  - @service.priceSale VND
+                                                        </label>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-outline " style="margin:20px 10px">
+                    <input type="submit" class="btn btn-primary" value="Book Appointment" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+</main>
+
+   

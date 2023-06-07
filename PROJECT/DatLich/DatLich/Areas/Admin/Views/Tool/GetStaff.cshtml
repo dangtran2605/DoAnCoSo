@@ -1,0 +1,11 @@
+﻿@model IEnumerable<DatLich.Models.staff>
+
+<div class="form-check form-check-inline">
+    <select class="select form-control-lg" name="idStaff">
+        <option value="0">Choose Staff</option>
+        @foreach (var item in Model)
+        {
+            <option value="@item.id">@item.fullName</option>
+        }
+    </select>
+</div>

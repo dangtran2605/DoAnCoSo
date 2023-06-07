@@ -1,0 +1,111 @@
+﻿@model DatLich.Models.booking
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+
+    <div class="page-section features" style="margin: 100px 10px">
+        <h4>Detail Booking</h4>
+        @using (Html.BeginForm("Details", "Booking", FormMethod.Get, new { @enctype = "multipart/form-data" }))
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="inPutName">Full Name</label>
+                        <input type="text" id="inPutName" value="@Model.fullName" class="form-control form-control-lg" disabled />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="inPhone">Phone</label>
+                        <input type="tel" id="inPhone" value="@Model.phone" class="form-control form-control-lg" disabled />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="inMail">Email</label>
+                        <input type="email" id="inMail" value="@Model.email" class="form-control form-control-lg" disabled />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="inAdr">Address</label>
+                        <input type="tel" id="inAdr" value="@Model.address" class="form-control form-control-lg" disabled />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="inpeo">People</label>
+                        <input type="number" id="inpeo" value="@Model.people" class="form-control form-control-lg" disabled />
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <label for="ipDate" class="form-label">Check In</label>
+                        <textarea class="form-control form-control-lg" id="ipDate" rows="1" disabled>@Model.dateCheckIn </textarea>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card-group">
+                        <div class="card-body">
+                            <div class="container">
+                                @Html.Action("GetServiceByIdBooking", "Tool", new { id = ViewBag.id })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+
+                    <div class="form-check form-check-inline mb-0 me-4">
+                        @if (Model.isDisable == true)
+                        {
+                            <label for="ipDis">Disable</label>
+                            <textarea class="form-control form-control-lg" id="ipDis" rows="1" disabled>True</textarea>
+
+                        }
+                        else
+                        {
+                            <label for="ipDis">Disable</label>
+                            <textarea class="form-control form-control-lg" id="ipDis" rows="1" disabled>False</textarea>
+                        }
+                    </div>
+                    <div class="form-check form-check-inline mb-0 me-4">
+
+                        @if (Model.isConfirm == true)
+                        {
+                            <label for="ipCon">Confirm</label>
+                            <textarea class="form-control form-control-lg" id="ipCon" rows="1" disabled>True</textarea>
+
+
+                        }
+                        else
+                        {
+                            <label for="ipCon">Confirm</label>
+                            <textarea class="form-control form-control-lg" id="ipCon" rows="1" disabled>False</textarea>
+                        }
+
+                    </div>
+                    <div class="form-check form-check-inline mb-0 me-4">
+
+                        @if (Model.isDone == true)
+                        {
+                            <label for="ipDon">Done</label>
+                            <textarea class="form-control form-control-lg" id="ipDon" rows="1" disabled>Done</textarea>
+
+
+                        }
+                        else
+                        {
+                            <label for="ipDon">Done</label>
+                            <textarea class="form-control form-control-lg" id="ipDon" rows="1" disabled>None</textarea>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="form-check">
+                <a type="button"  style="margin: 10px 550px; width: 250px"  class="btn btn-lg btn-primary btn-block" href="~/Admin/Booking">Back</a>
+            </div>
+        }
+    </div>
+</main>
+

@@ -1,0 +1,9 @@
+﻿@model IEnumerable<DatLich.Models.sale>
+
+<select class="select form-control-lg" name="idSale">
+    <option value="0">Choose Sale</option>
+    @foreach (var item in Model)
+    {
+        <option value="@item.id">@item.discount</option>
+    }
+</select>

@@ -1,0 +1,103 @@
+﻿@model DatLich.Models.service
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+
+    <div class="page-section features" style="margin: 100px 10px">
+        <h4>Detail Service</h4>
+        @using (Html.BeginForm("Detail", "Service", FormMethod.Get, new { @enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-outline mb-4">
+                <label class="form-label" for="inPutName">Service Name</label>
+                <textarea class="form-control form-control-lg" id="inPutName" rows="1" disabled>@Model.serviceName</textarea>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        <label class="form-label" for="inPrice">Price</label>
+                        <textarea class="form-control form-control-lg" id="inPrice" rows="1" disabled>@Model.price</textarea>
+
+
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        <label class="form-label" for="sale">Price Sale</label>
+                        <textarea class="form-control form-control-lg" id="sale" rows="1" disabled>@Model.priceSale</textarea>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="inDetail">Detail</label>
+                <textarea class="form-control form-control-lg" name="detail" id="inDetail" rows="6" disabled>@Model.detail</textarea>
+
+            </div>
+            
+
+            <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                <div class="form-check form-check-inline mb-0 me-4">
+                    <img src="@Model.image" height="100px" width="100px" class="mai-at-circle" />
+                </div>
+                <div class="form-check form-check-inline mb-0 me-4">
+                    @if (@Model.idSale != null)
+                    {
+                        <label for="InS">Sale</label>
+                        <textarea class="form-control form-control-lg" id="InS" rows="1" disabled>@Model.sale.discount</textarea>
+
+                    }
+                    else
+                    {
+                        <label for="InS">Sale</label>
+                        <textarea class="form-control form-control-lg" id="InS" rows="1" disabled>NULL</textarea>
+                    }
+                </div>
+                <div class="form-check form-check-inline mb-0 me-4">
+
+                    @if (@Model.isActive == true)
+                    {
+                        <label for="InIsA">IsActive</label>
+                        <textarea class="form-control form-control-lg" id="InIsA" rows="1" disabled>True</textarea>
+
+
+                    }
+                    else
+                    {
+                        <label for="InIsA">IsActive</label>
+                        <textarea class="form-control form-control-lg" id="InIsA" rows="1" disabled>False</textarea>
+                    }
+
+                </div>
+                <div class="form-check form-check-inline mb-0 me-4">
+
+                    @if (@Model.idCategory != null)
+                    {
+                        <label for="InCa">Category</label>
+                        <textarea class="form-control form-control-lg" id="InCa" rows="1" disabled>@Model.categoryService.categoryName</textarea>
+
+
+                    }
+                    else
+                    {
+                        <label for="InCa">Category</label>
+                        <textarea class="form-control form-control-lg" id="InCa" rows="1" disabled>NULL</textarea>
+                    }
+
+                </div>
+            </div>
+
+            <hr />
+            <div class="form-check">
+                <a type="button" style="margin: 10px 5px" class="btn btn-lg btn-outline-primary btn-block" href="~/Admin/Service/Index">Back</a>
+            </div>
+        }
+    </div>
+</main>
+

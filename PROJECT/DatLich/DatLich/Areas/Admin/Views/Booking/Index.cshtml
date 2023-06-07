@@ -1,0 +1,116 @@
+﻿@model IEnumerable<DatLich.Models.booking>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Booking Manager</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="~/Admin/Home/Index">Admin Home</a></li>
+            <li class="breadcrumb-item active">Booking</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-body">
+                Trang quản lý tin tức
+                
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Booking Manager
+
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Date CheckIn</th>
+                            <th>People</th>
+                            <th>Confirm</th>
+                            <th>Disable</th>
+                            <th>Done</th>
+                            <th>         </th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Date CheckIn</th>
+                            <th>People</th>
+                            <th>Confirm</th>
+                            <th>Disable</th>
+                            <th>Done</th>
+                            <th>         </th>
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+
+                                <td>@item.fullName</td>
+                                <td>@item.phone</td>
+                                <td>@item.email</td>
+                                <td>@item.dateCheckIn</td>
+                                <td>@item.people</td>
+                                @if (@item.isConfirm == true)
+                                {
+                                    <td>Confirm</td>
+                                }
+                                else
+                                {
+                                    <td>None</td>
+                                }
+                                @if (@item.isDisable == true)
+                                {
+                                    <td>Disable</td>
+                                }
+                                else
+                                {
+                                    <td>None</td>
+                                }
+                                @if (@item.isDone == true)
+                                {
+                                    <td>Yes</td>
+                                }
+                                else
+                                {
+                                    <td>No</td>
+                                }
+                                <td>
+                                    <ul class="list-inline m-0">
+                                        <li class="list-inline-item">
+                                            <a href="~/Admin/Booking/Details/@item.id" class="btn btn-outline-dark">Detail</a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            @Html.ActionLink("Confirm", "CheckConfirm", new { id = item.id }, new { @class = "btn btn-primary btn-sm rounded-0" })
+                                        </li>
+                                        <li class="list-inline-item">
+                                            @Html.ActionLink("Disable", "CheckDisable", new { id = item.id }, new { @class = "btn btn-danger btn-sm rounded-0" })
+                                        </li>
+                                        <li class="list-inline-item">
+                                            @Html.ActionLink("Done", "Done", new { id = item.id }, new { @class = "btn btn-lg btn-success btn-sm rounded-0" })
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+

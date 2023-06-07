@@ -1,0 +1,68 @@
+﻿@model DatLich.Models.service
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="page-section features" style="margin: 100px 10px">
+        <h4>Create Service</h4>
+        <form action="~/Admin/Service/Create" method="post" enctype="multipart/form-data">
+            <div class="form-outline mb-4">
+                <label class="form-label" for="inPutName">Service Name</label>
+                <input type="text" id="inPutName" name="serviceName" class="form-control form-control-lg" />
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        <label class="form-label" for="inPrice">Price</label>
+                        <input type="number" id="inPrice" name="price" class="form-control form-control-lg" />
+
+                    </div>
+                </div>
+               
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="inDetail">Detail</label>
+                <textarea class="form-control form-control-lg" name="detail" id="inDetail" rows="4"></textarea>
+
+            </div>
+            <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                <h6 class="mb-0 me-4">Image: </h6>
+
+                <div class="form-check form-check-inline mb-0 me-4">
+                    
+                    <input type="file" class="form-control-file" name="Image" id="InImage" style="width: 100%;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+
+                    @Html.Action("GetCategory","Tool")
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                    @Html.Action("GetSale", "Tool")
+
+                </div>
+                <div class="col-md-6 mb-4" style="margin:10px 20px">
+
+                    <input type="checkbox" class="form-check-input" name="IsActive" value="true" id="InIsA">
+                    <label for="InIsA">IsActive</label>
+                </div>
+            </div>
+
+            
+            <hr />
+            <div class="col-md-6 mb-2">
+                <a type="button" style="margin: 10px 10px;width:20%" class="btn btn-lg btn-outline-primary btn-block" href="~/Admin/Service/Index">Back</a>
+                <button type="submit" style="margin: 0px 10px; width: 20%" class="btn btn-lg btn-success btn-block">Create</button>
+            </div>
+        </form>
+    </div>
+</main>
+

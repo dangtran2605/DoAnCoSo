@@ -1,0 +1,18 @@
+﻿
+@model List<DatLich.Models.service>
+
+@foreach (var service in Model)
+{
+    <div>
+        <h2>@service.serviceName</h2>
+        <p>@service.detail</p>
+        <p>@service.price</p>
+        <p>@service.categoryService.categoryName</p>
+        <img src="@service.image" alt="@service.serviceName" />
+        <form method="post" action="@Url.Action("CreateAppointment")">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="serviceIds" value="@service.id" />
+            <input type="submit" value="Book Now" />
+        </form>
+    </div>
+}

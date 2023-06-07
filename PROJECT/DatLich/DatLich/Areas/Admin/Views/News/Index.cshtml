@@ -1,0 +1,92 @@
+﻿@model IEnumerable<DatLich.Models.news>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">News</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="~/Admin/Home/Index">Admin Home</a></li>
+            <li class="breadcrumb-item active">News</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-body">
+                Trang quản lý tin tức
+                .
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                News Manager
+                <a class="btn btn-primary" style="width=100px" href="~/Admin/News/Create">Create</a>
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Create by</th>
+                            <th>IsActive</th>
+                            <th>         </th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Create by</th>
+                            <th>IsActive</th>
+                            <th>         </th>
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    <img src="@item.image" class="img-rounded" width="60px" height="60px " />
+                                </td>
+                                <td>@item.newsTitle</td>
+                              
+                                <td>@item.accountAD.staff.fullName</td>
+                                @if (@item.isActive == true)
+                                {
+                                    <td>Yes</td>
+                                }
+                                else
+                                {
+                                    <td>No</td>
+                                }
+
+                                <td>
+                                    <ul class="list-inline m-0">
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-primary btn-sm rounded-0" type="button" href="~/Admin/News/Detail/@item.id" data-placement="top" title="Detail">Detail</a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-success btn-sm rounded-0" data-toggle="tooltip" data-placement="top" title="Edit" href="~/Admin/News/Edit/@item.id">Edit</a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm rounded-0" })
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+    
+                        }
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+

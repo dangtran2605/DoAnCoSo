@@ -1,0 +1,55 @@
+﻿@model DatLich.Models.sale
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="page-section features" style="margin: 100px 10px">
+        <h2>Edit Seller / <a type="submit" style="margin: 10px 5px;width:10%" class="btn btn-lg btn-outline-primary btn-block" href="~/Admin/Seller/Index">Back to list</a></h2>
+        @using (Html.BeginForm("Edit", "Seller", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+        {
+
+
+            <div class="form-outline md-4">
+                <label for="inNumble">Discount(%)</label>
+                <input class="form-control" id="inNumble" name="isNumble" value="@Model.isNumble" type="number" placeholder="..%" autofocus />
+            </div>
+
+
+            <hr />
+
+
+            <div class="form-outline md-4">
+                <img src="@Model.image" class="mai-at-circle" width="50px" height="50px"  alt="" />
+                <label for="InImage"></label>
+                <input type="file" class="form-control-file" name="Image" id="InImage" style="width: 100%;">
+            </div>
+
+
+            <hr />
+
+
+            <div class="form-outline md-4 "style="margin:0px 20px">
+
+                @if (@Model.status == true)
+                {
+                    <input type="checkbox" class="form-check-input" name="Status" value="true" id="InIsA" checked spellcheck="@Model.status">
+                }
+                else
+                {
+                    <input type="checkbox" class="form-check-input" name="Status" value="true" id="InIsA" spellcheck="@Model.status">
+                }
+                <label for="InIsA">IsActive</label>
+
+            </div>
+            <hr />
+            <div class="form-check" style="width:10%">
+                
+                <button type="submit" style="margin: 0px 10px" class="btn btn-lg btn-success btn-block">Save</button>
+            </div>
+        }
+
+
+    </div>
+</main>

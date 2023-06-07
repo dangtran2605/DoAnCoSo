@@ -1,0 +1,98 @@
+﻿@model DatLich.Models.staff
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<main>
+
+    <div class="page-section features" style="margin: 100px 10px">
+        <h4>Edit Staff</h4>
+        @using (Html.BeginForm("Detail", "Staff", FormMethod.Get, new { @enctype = "multipart/form-data" }))
+        {
+            <hr/>
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-md-6 mb-4">
+
+                    <div class="form-outline">
+                        <label class="form-label" for="inputFullName">Full Name</label>
+                        <input type="text" id="inputFullName" value="@Model.fullName" name="fullname" class="form-control form-control-lg" disabled />
+
+                    </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                    <div class="form-outline">
+                        <label class="form-label" for="inputAdr">Address</label>
+                        <input type="text" id="inputAdr" value="@Model.address" name="address" class="form-control form-control-lg" disabled />
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                    <div class="form-outline datepicker w-100">
+                        <label for="birthdayDate" class="form-label">Birthday</label>
+                        <input id="birthdayDate" value="@Model.born" name="born" type="text" class="form-control form-control-lg" disabled />
+
+                    </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        @if (Model.idPosition != null)
+                        {
+                            <label for="posi" class="form-label">Position</label>
+                            <input id="posi" value="@Model.position.positionName" name="born" type="text" class="form-control form-control-lg" disabled />
+
+                        }
+                        else
+                        {
+                            <label for="posi" class="form-label">Position</label>
+                            <input id="posi" value="NULL" name="born" type="text" class="form-control form-control-lg" disabled />
+
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                    <div class="form-outline">
+                        <label class="form-label" for="emailAddress">Email</label>
+                        <input type="email" id="emailAddress" value="@Model.email" name="email" class="form-control form-control-lg" disabled />
+
+                    </div>
+
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+
+                    <div class="form-outline">
+                        <label class="form-label" for="phoneNumber">Phone Number</label>
+                        <input type="tel" id="phoneNumber" value="@Model.phone" name="phone" class="form-control form-control-lg" disabled />
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row" style="margin: 10px 1px">
+                <label for="InDetail">Detail</label>
+                <textarea class="form-control" name="detail" id="InDetail" rows="6" disabled>@Model.detail</textarea>
+
+            </div>
+
+            <div class="mt-4 pt-2">
+                <a type="button" style="margin: 10px 5px" class="btn btn-lg btn-outline-primary btn-block" href="~/Admin/Staff/Index">Back</a>
+                
+            </div>
+        }
+    </div>
+</main>
+

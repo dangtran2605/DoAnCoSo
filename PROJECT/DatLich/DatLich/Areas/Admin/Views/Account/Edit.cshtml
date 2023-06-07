@@ -1,0 +1,61 @@
+﻿@model DatLich.Models.accountAD
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<main>
+
+    <div class="page-section features" style="margin: 100px 10px">
+        <h4>Edit Account</h4>
+        @using (Html.BeginForm("Edit", "Account", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="col-md-6 mb-5">
+                <p class="text-danger">
+                    @TempData["error"]
+                </p>
+            </div>
+            <div class=" col-md-7 mb-4">
+                <label class="form-label" for="inputUName">UserName</label>
+                <input type="text" id="inputUName" name="userName" value="@Model.userName" class="form-control form-control-lg" />
+
+
+            </div>
+            <div class="col-md-7 mb-4">
+                <label class="form-label" for="inputPass">PassWord</label>
+                <input type="password" id="inputPass" name="passWord" class="form-control form-control-lg" />
+
+            </div>
+            <div class="col-md-7 mb-4">
+                <label class="form-label" for="conPas">Confirm PassWord</label>
+                <input type="password" id="conPas" name="confirmPassword" class="form-control form-control-lg" />
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    @Html.Action("GetStaff", "Tool")
+                </div>
+                <div class="form-check col-md-6 mb-4">
+                    @if (Model.isActive == true)
+                    {
+                        <input type="checkbox" class="form-check-input" name="IsActive" value="true" id="InIsA" checked spellcheck="@Model.isActive">
+                        <label for="InIsA">IsActive</label>
+                    }
+                    else
+                    {
+                        <input type="checkbox" class="form-check-input" name="IsActive" value="true" id="InIsA" spellcheck="@Model.isActive">
+                        <label for="InIsA">IsActive</label>
+                    }
+
+                </div>
+            </div>
+            <div class="col-md-6 mb-4" , style="margin: 10px 10px">
+                <a href="~/Admin/Account" class="btn btn-outline-primary">Back</a>
+                <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+            </div>
+        }
+    </div>
+</main>
+

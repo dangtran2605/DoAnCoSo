@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\DatLich",
+    "\\DatLich\\DatLich",
+    "\\DatLich\\DatLich\\Areas",
+    "\\DatLich\\DatLich\\Areas\\Admin",
+    "\\DatLich\\DatLich\\Areas\\Admin\\Controllers"
+  ],
+  "SelectedNode": "\\DatLich\\DatLich\\Areas\\Admin\\Controllers\\AccountController.cs",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,40 @@
+﻿@model DatLich.Models.sale
+@{
+    ViewBag.isNumble = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="page-section features" style="margin: 100px 10px">
+        <h4>Create Seller /  <a type="button" style="width:10%" class="btn btn-lg btn-outline-primary btn-block" href="~/Admin/Seller/Index">Back to list</a></h4>
+        <form action="~/Admin/Seller/Create" method="post" enctype="multipart/form-data">
+            <div class="form-outline md-4">
+                <label for="inNumble">Discount(%)</label>
+                <input class="form-control" id="inNumble" name="isNumble" type="number" placeholder="..%" autofocus />
+            </div>
+
+           
+            <hr />
+            <div class="row">
+                <div class="form-outline col-md-4" >
+                    <label for="InImage"></label>
+                    <input type="file" class="form-control-file" name="Image" id="InImage" style="width: 100%;">
+                </div>
+                <div class="form-outline col-md-4 " style="margin:25px 0px">
+                    
+                    <input type="checkbox" class="form-check-input" name="Status" value="true" id="InIsA">
+                    <label for="InIsA">IsActive</label>
+
+                </div>
+            </div>
+            <hr/>
+
+
+            <div class="form-check md-4">
+               
+                <button type="submit" style="width:10%" class="btn btn-lg btn-primary btn-block">Create</button>
+            </div>
+        </form>
+    </div>
+</main>
+

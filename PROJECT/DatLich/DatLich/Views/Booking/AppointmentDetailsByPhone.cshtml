@@ -1,0 +1,16 @@
+﻿@model IEnumerable<DatLich.Models.booking>
+@{
+    ViewBag.Title = "AppointmentDetailsByPhone";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<main>
+    <h1>Track Appointments</h1>
+    <form method="post" action="/~/Booking/Follow">
+        <label for="phone">Phone number:</label>
+        <input type="text" name="phone" id="phone" required>
+        <button type="submit">Track</button>
+    </form>
+</main>
+

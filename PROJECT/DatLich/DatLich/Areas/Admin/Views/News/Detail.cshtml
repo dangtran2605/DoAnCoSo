@@ -1,0 +1,51 @@
+﻿@model DatLich.Models.news
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+
+    <div class="page-section features" style="margin: 100px 10px">
+        @using (Html.BeginForm("Detail", "News", FormMethod.Get, new { @enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <h2>Detail News</h2>
+            <div class="form-outline md-4">
+                <label for="InTitle">Title</label>
+                <input class="form-control" id="Title"  value="@Model.newsTitle" type="text"   disabled />
+            </div>
+            <hr />
+            <div class="form-outline md-4">
+                <label for="InDetail">Detail</label>
+                <textarea class="form-control" name="detail" id="InDetail" rows="4" disabled>@Model.detail</textarea>
+            </div>
+            <hr />
+            <div class="form-outline md-4">
+                <label for="InDescrip">Description</label>
+                <textarea class="form-control" name="description" id="InDescrip" rows="6" disabled>@Model.description</textarea>
+            </div>
+            <hr />
+            <div class="form-outline md-4" style="margin: 10px 10px">
+                <img src="@Model.image" height="100px" width="100px" class="mai-at-circle" />
+                
+            </div>
+            <hr />
+            <div class="form-check col-1" style="margin: 20px 10px">
+                
+                    <label for="InIsA">IsActive</label>
+                    <textarea class="form-control" id="InIsA" rows="1" type="text" disabled>@Model.isActive</textarea>
+
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-offset-2 col-md-10">
+                    <a type="submit" style="margin: 10px 10px;width:20%" class="btn btn-lg btn-outline-primary btn-block" href="~/Admin/News/Index">Back</a>
+                   
+                </div>
+            </div>
+
+
+        }
+    </div>
+</main>
